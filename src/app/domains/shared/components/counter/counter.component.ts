@@ -73,7 +73,7 @@ export class CounterComponent {
   }
 
   doSomething(){
-    console.log('Change duration');
+    console.log('Change duration');https://www.youtube.com/playlist?list=PL_9MDdjVuFjEscTzZSLo6upnX1AbHj-dl
     //async
   }
 }
