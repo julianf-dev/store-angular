@@ -1,1 +1,10 @@
-<p>wave-audio works!</p>
+<div>
+  <div #wave></div>
+  <button (click)="playPause()">
+    @if (!isPlaying()) {
+    <span>Play</span>
+    } @else {
+    <span>Pause</span>
+    }
+  </button>
+</div>
