@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductComponent } from '../../components/product/product.component';
-import { Product } from '../../../shared/models/product.model';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
+import { ProductComponent } from '@products/components/product/product.component';
+import { Product } from '@shared/models/product.model';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -16,57 +17,22 @@ export class ListComponent {
 
   products = signal<Product[]>([])
   private cartService = inject(CartService)
+  private productService = inject(ProductService)
 
-  constructor(){
-    const initProducts: Product[] = [
-      {
-        id: Math.random(),
-        title:'Produ 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=24',
-        createdAt: new Date().toString()
+  ngOnInit(){
+    this.productService.getProducts().subscribe({
+      next:(products:any) =>{
+        console.log(products);
+        this.products.set(products)
       },
-      {
-        id: Math.random(),
-        title:'Produ 2',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        createdAt: new Date().toString()
-      },
-      {
-        id: Math.random(),
-        title:'Produ 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=24',
-        createdAt: new Date().toString()
-      },
-      {
-        id: Math.random(),
-        title:'Produ 2',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        createdAt: new Date().toString()
-      },
-      {
-        id: Math.random(),
-        title:'Produ 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=24',
-        createdAt: new Date().toString()
-      },
-      {
-        id: Math.random(),
-        title:'Produ 2',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=12',
-        createdAt: new Date().toString()
-      },
-    ]
-    this.products.set(initProducts)
+      error:(error) =>{
+        console.log(error);
+      }
+    })
   }
-
-
   addToCart(product: Product){
     this.cartService.addToCart(product)
   }
+
+
 }
