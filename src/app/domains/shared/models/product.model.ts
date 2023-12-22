@@ -7,6 +7,5 @@ export interface Product {
   description: string;
   category:    Category;
   images:      string[];
-  createdAt: string
-
+  creationAt: string
 }
