@@ -1,5 +1,5 @@
 <div class="group rounded-lg border">
-  <a  class="w-full  overflow-hidden rounded-t-lg bg-gray-200">
+  <a  class="w-full  overflow-hidden rounded-t-lg bg-gray-200" [routerLink]="['/product', product.id]">
     <img [src]="product.images[0]" [alt]="product.title" class=" w-full object-cover object-center group-hover:opacity-75">
   </a>
   <div class="flex flex-col space-y-2 p-4">

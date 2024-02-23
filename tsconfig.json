@@ -24,7 +24,8 @@
     ],
     "paths": {
       "@products/*": ["./src/app/domains/products/*"],
-      "@shared/*": ["./src/app/domains/shared/*"]
+      "@shared/*": ["./src/app/domains/shared/*"],
+      "@environments/*": ["./src/environments/*"]
     }
   },
   "angularCompilerOptions": {
